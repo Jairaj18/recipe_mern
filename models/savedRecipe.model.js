@@ -7,4 +7,4 @@ const savedRecipeSchema = new mongoose.Schema({
     }
 })
 
-export const savedRecipe = mongoose.model('saveRecipe', savedRecipeSchema);
+export const SavedRecipe = mongoose.model('savedRecipe', savedRecipeSchema);

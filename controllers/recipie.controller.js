@@ -1,6 +1,6 @@
 
 import Recipe from "../models/recipie.model.js";
-
+import { SavedRecipe } from "../models/savedRecipe.model.js";
 
 export const createRecipe = async (req, res) => {
     const { title, instruction, ingredients, cookingTime, servings, category, createdBy } = req.body;
@@ -47,4 +47,12 @@ export const getRecipieBYId = async(req,res)=>{
         res.json({message: message.err})
 
     }
+}
+
+export const savedRecipeById = async(req,res)=>{
+    const id = req.params.id;
+    let recipe = await SavedRecipe.findOne({recipe:id})
+    if(recipe) return res.json({message:"recipe already exist"});
+    recipe = await SavedRecipe.create({recipe:id});
+    res.json({message:"Recipe saved Successfully"});
 }
